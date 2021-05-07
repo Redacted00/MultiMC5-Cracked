@@ -12,8 +12,8 @@
           xhr.responseType = 'json';
         
           xhr.onload  = function() {
-             var jsonResponse = req.response;
-             console.log(jsonResponse.artifacts);
+             var jsonResponse = xhr.response;
+             console.log(jsonResponse.artifacts[0]);
              // do something with jsonResponse
           };
 
@@ -38,7 +38,7 @@
           return response.json();
         })
           .then(function(jsonResponse) {
-            console.log(jsonResponse.artifacts[0]);
+            console.log(jsonResponse.artifacts[0].archive_download_url);
             // do something with jsonResponse
           });
     </script>
