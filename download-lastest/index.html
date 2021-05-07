@@ -13,25 +13,16 @@
         
           xhr.onload  = function() {
              var jsonResponse = xhr.response;
-             console.log(jsonResponse.artifacts[0]);
+             console.log(jsonResponse.artifacts[0].archive_download_url);
              // do something with jsonResponse
           };
 
           // 3. Send request
           xhr.send();
-
-          // 4. Errors 
-          if (xhr.status != 200) {
-              // Responce error out
-              return( xhr.status + ': ' + xhr.statusText ); // 404: Not Found
-          } else {
-              // Responce result
-              return( xhr.responseText ); // responseText -- 
-          }
       }
       var url = 'https://api.github.com/repos/PibePlayer/MultiMC5-Cracked/actions/artifacts';
       
-      console.log(GetJson(url));
+      GetJson(url);
       
       fetch(url)
         .then(function(response) {
