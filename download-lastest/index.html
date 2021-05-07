@@ -2,24 +2,27 @@
   <head>
     <title>Redirecting to Lastest Download...</title>
     <script>
-      function getJSONP(url, success) {
-        var ud = '_' + +new Date,
-            script = document.createElement('script'),
-            head = document.getElementsByTagName('head')[0] 
-                   || document.documentElement;
+      function GetJson(url)
+      {
+          // 1. New Object XMLHttpRequest
+          var xhr = new XMLHttpRequest();
 
-        window[ud] = function(data) {
-            head.removeChild(script);
-            success && success(data);
-        };
+          // 2. Config it 
+          xhr.open('GET', url, false);
 
-        script.src = url.replace('callback=?', 'callback=' + ud);
-        head.appendChild(script);
+          // 3. Send request
+          xhr.send();
+
+          // 4. Errors 
+          if (xhr.status != 200) {
+              // Responce error out
+              return( xhr.status + ': ' + xhr.statusText ); // 404: Not Found
+          } else {
+              // Responce result
+              return( xhr.responseText ); // responseText -- 
+          }
       }
-
-      getJSONP('https://api.github.com/repos/PibePlayer/MultiMC5-Cracked/actions/artifacts', function(data){
-          console.log(data.artifacts[0].url);
-      });  
+      console.log(GetJson('https://api.github.com/repos/PibePlayer/MultiMC5-Cracked/actions/artifacts'));
     </script>
   </head>
 </html>
