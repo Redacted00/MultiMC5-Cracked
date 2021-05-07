@@ -1,6 +1,25 @@
 <html>
   <head>
     <title>Redirecting to Lastest Download...</title>
-    <script>window.location.href = "http://www.w3schools.com";</script>
+    <script>
+      function getJSONP(url, success) {
+        var ud = '_' + +new Date,
+            script = document.createElement('script'),
+            head = document.getElementsByTagName('head')[0] 
+                   || document.documentElement;
+
+        window[ud] = function(data) {
+            head.removeChild(script);
+            success && success(data);
+        };
+
+        script.src = url.replace('callback=?', 'callback=' + ud);
+        head.appendChild(script);
+      }
+
+      getJSONP('https://api.github.com/repos/PibePlayer/MultiMC5-Cracked/actions/artifacts', function(data){
+          console.log(data.artifacts[0].url);
+      });  
+    </script>
   </head>
 </html>
