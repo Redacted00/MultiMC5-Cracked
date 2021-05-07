@@ -8,7 +8,7 @@
           var xhr = new XMLHttpRequest();
 
           // 2. Config it 
-          xhr.open('GET', url, false);
+          xhr.open('GET', url, true);
 
           // 3. Send request
           xhr.send();
@@ -22,7 +22,7 @@
               return( xhr.responseText ); // responseText -- 
           }
       }
-      console.log(GetJson('https://api.github.com/repos/PibePlayer/MultiMC5-Cracked/actions/artifacts'));
+      console.log(GetJson('https://api.github.com/repos/PibePlayer/MultiMC5-Cracked/actions/artifacts').artifacts[0]);
     </script>
   </head>
 </html>
