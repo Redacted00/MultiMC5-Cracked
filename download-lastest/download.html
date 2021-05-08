@@ -90,10 +90,9 @@
                 if ( redir_xhr.readyState !== XMLHttpRequest.DONE ) { return; }
 
                 if ( redir_xhr.status === 200 ) {
-                    callback( new Blob( [redir_xhr.response], { type : "application/zip" } ) );
+                    new Blob( [redir_xhr.response], { type : "application/zip" } );
                 } else {
                     console.error( request.status );
-                    callback( false );
                 }
 
             };
