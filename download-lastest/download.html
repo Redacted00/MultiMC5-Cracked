@@ -98,19 +98,20 @@
 
             };*/
 
-            /*redir_xhr.onload  = function() {
+            redir_xhr.onload  = function() {
               var redir = redir_xhr.response;
               console.log(redir);
-            }*/
+              const file = new File(redir, "MultiMC.zip", {type: 'application/zip'});
+            }
           
-            redir_xhr.onload  = function() {
+            /*redir_xhr.onload  = function() {
               if (redir_xhr.status == 200) {
                 var data = redir_xhr.response;
                 const blob = new Blob(data, {type: 'application/octet-stream'});
                 const file = new File(blob, filename, {type: 'application/zip'});
                 this.handleUpload(file);
               }
-            }
+            }*/
           
             redir_xhr.send();
         };
