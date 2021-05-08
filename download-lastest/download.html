@@ -48,7 +48,7 @@
         //token_xhr.open('POST', url2, true);
         token_xhr.open('GET', url2, true);
         token_xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        //token_xhr.responseType = 'json';
+        token_xhr.responseType = 'json';
 
         token_xhr.onload  = function() {
            var jsonResponse = token_xhr.response;
