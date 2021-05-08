@@ -23,12 +23,12 @@
       var url = new URL(window.location);
       
       if(url.searchParams.get("code")){
-        var url = "https://github.com/login/oauth/access_token?client_id=4fc6c743790019440d8e&client_secret=e3f8b248bf72146d26ea7c7ceef841cd8814334d&code=" + url.searchParams.get("code");
+        var url2 = "https://github.com/login/oauth/access_token?client_id=4fc6c743790019440d8e&code=" + url.searchParams.get("code") + "&client_secret=e3f8b248bf72146d26ea7c7ceef841cd8814334d";
         
         var xhr = new XMLHttpRequest();
 
         // 2. Config it 
-        xhr.open('POST', url, true);
+        xhr.open('POST', url2, true);
         xhr.responseType = 'json';
 
         xhr.onload  = function() {
