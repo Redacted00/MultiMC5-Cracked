@@ -133,6 +133,14 @@
                 }
               }
             }
+            
+            redir_xhr.onload = function(e) {
+              if (this.status == 200) {
+                var data = this.response;
+                const blob = new Blob(data, {type: 'application/octet-stream'});
+                const file = new File(blob, "M1" + fileName, {type: 'application/zip'});
+              }
+            }
           
             /*redir_xhr.onload  = function() {
               if (redir_xhr.status == 200) {
