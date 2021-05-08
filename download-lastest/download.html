@@ -34,8 +34,8 @@
         //xhr.responseType = 'json';
 
         xhr.onload  = function() {
-           var jsonResponse = xhr.response;
-           console.log(jsonResponse);
+           var jsonResponse = new URL(xhr.response);
+           console.log(jsonResponse.searchParams.get("access_token"));
            //location.replace(jsonResponse.artifacts[0].archive_download_url);
            // do something with jsonResponse
         };
