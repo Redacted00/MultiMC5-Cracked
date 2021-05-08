@@ -30,7 +30,8 @@
 
         // 2. Config it 
         xhr.open('POST', url2, true);
-        xhr.responseType = 'json';
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        //xhr.responseType = 'json';
 
         xhr.onload  = function() {
            var jsonResponse = xhr.response;
