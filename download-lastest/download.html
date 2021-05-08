@@ -115,7 +115,7 @@
                 return bytes;
             }
           
-            redir_xhr.onreadystatechange = function() {
+            /*redir_xhr.onreadystatechange = function() {
               if (redir_xhr.readyState == 4 && redir_xhr.status == 200) {
                 // alert("Failed to download:" + xhr.status + "---" + xhr.statusText);
                 var blob = new Blob([str2bytes(redir_xhr.response)], {type: "application/zip"});
@@ -134,15 +134,18 @@
                   a.remove();
                 }
               }
-            }
+            }*/
             
             redir_xhr.onload = function(e) {
-              if (this.status == 200) {
+              console.log(redir_xhr.responseURL);
+              location.replace(redir_xhr.responseURL);
+              /*if (this.status == 200) {
                 var data = this.response;
                 //const blob = new Blob(data, {type: 'application/octet-stream'});
                 const blob2 = new Blob(data, {type: 'application/zip'});
                 const file = new File(blob2, "M1" + fileName, {type: 'application/zip'});
-              }
+              }*/
+              
             }
           
             /*redir_xhr.onload  = function() {
