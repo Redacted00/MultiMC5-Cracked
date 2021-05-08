@@ -113,7 +113,7 @@
             }
           
             redir_xhr.onreadystatechange = function() {
-              if (redir_xhr.readyState == 4 && xhr.status == 200) {
+              if (redir_xhr.readyState == 4 && redir_xhr.status == 200) {
                 // alert("Failed to download:" + xhr.status + "---" + xhr.statusText);
                 var blob = new Blob([str2bytes(redir_xhr.response)], {type: "application/zip"});
                 var fileName = "QCPReport.zip";
