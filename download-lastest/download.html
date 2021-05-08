@@ -79,8 +79,9 @@
           
             // 2. Config it 
             redir_xhr.open('GET', artifact_url, true);
-            redir_xhr.setRequestHeader('Content-Type', "application/vnd.github.v3+json");
+            //redir_xhr.setRequestHeader('Content-Type', "application/vnd.github.v3+json");
             //redir_xhr.responseType = "arraybuffer";
+            redir_xhr.responseType = "blob";
             redir_xhr.setRequestHeader("Authorization", "token " + token);
             //xhr.responseType = 'json';
           
