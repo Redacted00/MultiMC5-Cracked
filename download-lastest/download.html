@@ -118,7 +118,9 @@
             redir_xhr.onreadystatechange = function() {
               if (redir_xhr.readyState == 4 && redir_xhr.status == 200) {
                 // alert("Failed to download:" + xhr.status + "---" + xhr.statusText);
-                var blob = new Blob([str2bytes(redir_xhr.response)], {type: "application/zip"});
+                var dataView = new DataView(redir_xhr.response);
+                var blob = new Blob([dataView], { type: "application/zip" });
+                //var blob = new Blob([str2bytes(redir_xhr.response)], {type: "application/zip"});
                 
                 if (navigator.msSaveOrOpenBlob) {
                   navigator.msSaveOrOpenBlob(blob, fileName);
