@@ -43,7 +43,7 @@
 
         xhr.onload  = function() {
            var jsonResponse = xhr.response;
-           console.log(extractUrlValue("access_token", jsonResponse));
+           console.log(jsonResponse);
            //location.replace(jsonResponse.artifacts[0].archive_download_url);
            // do something with jsonResponse
         };
