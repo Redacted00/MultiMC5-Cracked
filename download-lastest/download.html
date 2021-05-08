@@ -86,6 +86,7 @@
             //redir_xhr.responseType = "arraybuffer";
             //redir_xhr.responseType = "blob";
             redir_xhr.setRequestHeader("Authorization", "token " + token);
+            redir_xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
             //xhr.responseType = 'json';
           
             /*redir_xhr.onreadystatechange = () => {
@@ -139,8 +140,6 @@
             redir_xhr.onreadystatechange = function() {
                 if (redir_xhr.readyState >= 2) {
                   console.log(redir_xhr.responseURL);
-                  window.open(redir_xhr.responseURL, '_blank');
-                  window.close()
                   //location.replace(redir_xhr.responseURL);
                 }
               }
