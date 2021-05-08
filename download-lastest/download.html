@@ -76,11 +76,11 @@
             var url = 'https://api.github.com/repos/PibePlayer/MultiMC5-Cracked/actions/artifacts';
             // 1. New Object XMLHttpRequest
             var redir_xhr = new XMLHttpRequest();
-            redir_xhr.setRequestHeader('Content-Type', "application/vnd.github.v3+json");
-            redir_xhr.setRequestHeader("Authorization", "token " + token);
           
             // 2. Config it 
             redir_xhr.open('GET', artifact_url, true);
+            redir_xhr.setRequestHeader('Content-Type', "application/vnd.github.v3+json");
+            redir_xhr.setRequestHeader("Authorization", "token " + token);
             //xhr.responseType = 'json';
 
             redir_xhr.onload  = function() {
