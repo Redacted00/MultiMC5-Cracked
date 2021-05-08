@@ -2,7 +2,9 @@
   <head>
     <title>Redirecting to Lastest Download...</title>
     <script>
-      /*var url = 'https://api.github.com/repos/PibePlayer/MultiMC5-Cracked/actions/artifacts';
+      var artifact_url;
+      var token;
+      var url = 'https://api.github.com/repos/PibePlayer/MultiMC5-Cracked/actions/artifacts';
       // 1. New Object XMLHttpRequest
       var xhr = new XMLHttpRequest();
 
@@ -11,14 +13,16 @@
       xhr.responseType = 'json';
 
       xhr.onload  = function() {
-         var jsonResponse = xhr.response;
-         console.log(jsonResponse.artifacts[0].archive_download_url);
-         //location.replace(jsonResponse.artifacts[0].archive_download_url);
-         // do something with jsonResponse
+        var jsonResponse = xhr.response;
+        console.log(jsonResponse.artifacts[0].archive_download_url);
+        artifact_url = jsonResponse.artifacts[0].archive_download_url;
+
+        //location.replace(jsonResponse.artifacts[0].archive_download_url);
+        // do something with jsonResponse
       };
 
       // 3. Send request
-      xhr.send();*/
+      xhr.send();
       
       function extractUrlValue(key, url)
       {
@@ -43,9 +47,47 @@
 
         xhr.onload  = function() {
            var jsonResponse = xhr.response;
-           console.log(extractUrlValue("access_token", jsonResponse));
+           token = extractUrlValue("access_token", jsonResponse)
+           console.log(token);
            //location.replace(jsonResponse.artifacts[0].archive_download_url);
            // do something with jsonResponse
+          
+            /*var request = new XMLHttpRequest();
+
+            request.open( '', file, true );
+            request.responseType = "arraybuffer";
+
+            request.onreadystatechange = () => {
+
+                // Do nothing if we are not ready yet
+                if ( request.readyState !== XMLHttpRequest.DONE ) { return; }
+
+                if ( request.status === 200 ) {
+                    callback( new Blob( [request.response], { type : "application/zip" } ) );
+                } else {
+                    console.error( request.status );
+                    callback( false );
+                }
+
+            };
+
+            request.send();*/
+          
+            var url = 'https://api.github.com/repos/PibePlayer/MultiMC5-Cracked/actions/artifacts';
+            // 1. New Object XMLHttpRequest
+            var xhr = new XMLHttpRequest();
+            xhr.setRequestHeader('Content-Type', "application/vnd.github.v3+json");
+            xhr.setRequestHeader("Authorization", "token " + token);
+          
+            // 2. Config it 
+            xhr.open('GET', artifact_url, true);
+            //xhr.responseType = 'json';
+
+            xhr.onload  = function() {
+              var redir = xhr.response;
+              console.log(redir);
+            }
+            xhr.send();
         };
 
         // 3. Send request
