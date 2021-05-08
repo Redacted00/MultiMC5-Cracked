@@ -47,14 +47,15 @@
         // 2. Config it 
         //token_xhr.open('POST', url2, true);
         token_xhr.open('GET', url2, true);
-        //token_xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        token_xhr.responseType = 'json';
+        token_xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        //token_xhr.responseType = 'json';
 
         token_xhr.onload  = function() {
            var jsonResponse = token_xhr.response;
            //token = extractUrlValue("access_token", jsonResponse)
            token = jsonResponse.token;
            console.log(token);
+           console.log(jsonResponse);
            //location.replace(jsonResponse.artifacts[0].archive_download_url);
            // do something with jsonResponse
           
