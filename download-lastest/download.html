@@ -82,11 +82,25 @@
             redir_xhr.setRequestHeader('Content-Type', "application/vnd.github.v3+json");
             redir_xhr.setRequestHeader("Authorization", "token " + token);
             //xhr.responseType = 'json';
+          
+            request.onreadystatechange = () => {
 
-            redir_xhr.onload  = function() {
+                // Do nothing if we are not ready yet
+                if ( request.readyState !== XMLHttpRequest.DONE ) { return; }
+
+                if ( request.status === 200 ) {
+                    callback( new Blob( [request.response], { type : "application/zip" } ) );
+                } else {
+                    console.error( request.status );
+                    callback( false );
+                }
+
+            };
+
+            /*redir_xhr.onload  = function() {
               var redir = redir_xhr.response;
               console.log(redir);
-            }
+            }*/
             redir_xhr.send();
         };
 
