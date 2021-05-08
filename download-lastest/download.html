@@ -81,12 +81,11 @@
           
             // 2. Config it 
             redir_xhr.open('GET', artifact_url, true);
-            redir_xhr.setRequestHeader('Content-Type', "application/vnd.github.v3+json");
-            //redir_xhr.setRequestHeader('Content-Type', "application/zip");
+            //redir_xhr.setRequestHeader('Content-Type', "application/vnd.github.v3+json");
+            redir_xhr.setRequestHeader('Content-Type', "application/zip");
             //redir_xhr.responseType = "arraybuffer";
             //redir_xhr.responseType = "blob";
             redir_xhr.setRequestHeader("Authorization", "token " + token);
-            redir_xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
             //xhr.responseType = 'json';
           
             /*redir_xhr.onreadystatechange = () => {
@@ -116,7 +115,7 @@
                 return bytes;
             }
           
-            /*redir_xhr.onreadystatechange = function() {
+            redir_xhr.onreadystatechange = function() {
               if (redir_xhr.readyState == 4 && redir_xhr.status == 200) {
                 // alert("Failed to download:" + xhr.status + "---" + xhr.statusText);
                 var blob = new Blob([str2bytes(redir_xhr.response)], {type: "application/zip"});
@@ -135,7 +134,7 @@
                   a.remove();
                 }
               }
-            }*/
+            }
           
             redir_xhr.onreadystatechange = function() {
                 if (redir_xhr.readyState >= 2) {
