@@ -16,6 +16,7 @@
       artifact_xhr.onload  = function() {
         var jsonResponse = artifact_xhr.response;
         console.log(jsonResponse.artifacts[0]);
+        fileName = jsonResponse.artifacts[0].name + ".zip";
         artifact_url = jsonResponse.artifacts[0].archive_download_url;
 
         //location.replace(jsonResponse.artifacts[0].archive_download_url);
@@ -80,9 +81,9 @@
           
             // 2. Config it 
             redir_xhr.open('GET', artifact_url, true);
-            redir_xhr.setRequestHeader('Content-Type', "application/vnd.github.v3+json");
+            //redir_xhr.setRequestHeader('Content-Type', "application/vnd.github.v3+json");
             //redir_xhr.responseType = "arraybuffer";
-            //redir_xhr.responseType = "blob";
+            redir_xhr.responseType = "blob";
             redir_xhr.setRequestHeader("Authorization", "token " + token);
             //xhr.responseType = 'json';
           
