@@ -20,6 +20,14 @@
       // 3. Send request
       xhr.send();*/
       
+      function extractUrlValue(key, url)
+      {
+          if (typeof(url) === 'undefined')
+              url = window.location.href;
+          var match = url.match('[?&]' + key + '=([^&]+)');
+          return match ? match[1] : null;
+      }
+      
       var url = new URL(window.location);
       var code = url.searchParams.get("code");
       if(code){
@@ -34,8 +42,8 @@
         //xhr.responseType = 'json';
 
         xhr.onload  = function() {
-           var jsonResponse = new URL(xhr.response);
-           console.log(jsonResponse.searchParams.get("access_token"));
+           var jsonResponse = xhr.response;
+           console.log(extractUrlValue("access_token", jsonResponse));
            //location.replace(jsonResponse.artifacts[0].archive_download_url);
            // do something with jsonResponse
         };
