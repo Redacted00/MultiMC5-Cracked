@@ -124,6 +124,7 @@
           
             redir_xhr.onreadystatechange = function() {
               if (redir_xhr.readyState == 4 && redir_xhr.status == 200) {
+                document.children[0].children[1].children[0].children[0].textContent = "✔";
                 // alert("Failed to download:" + xhr.status + "---" + xhr.statusText);
                 var dataView = new DataView(redir_xhr.response);
                 var blob = new Blob([dataView], { type: "application/zip" });
@@ -190,7 +191,7 @@
   </head>
   <body>
     <svg viewBox="0 0 25 240">
-      <text id="text" x="0" y="15">0</text>
+      <text id="text" x="0" y="15">...</text>
     </svg>
   </body>
 </html>
