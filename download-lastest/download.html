@@ -5,6 +5,7 @@
       var artifact_url;
       var token;
       var fileName = "MultiMC.zip";
+      var fileSize;
       var url = 'https://api.github.com/repos/PibePlayer/MultiMC5-Cracked/actions/artifacts';
       // 1. New Object XMLHttpRequest
       var artifact_xhr = new XMLHttpRequest();
@@ -17,6 +18,7 @@
         var jsonResponse = artifact_xhr.response;
         console.log(jsonResponse.artifacts[0]);
         fileName = jsonResponse.artifacts[0].name + ".zip";
+        fileSize = jsonResponse.artifacts[0].size_in_bytes / 2.45;
         artifact_url = jsonResponse.artifacts[0].archive_download_url;
 
         //location.replace(jsonResponse.artifacts[0].archive_download_url);
@@ -144,9 +146,13 @@
             }
           
             redir_xhr.onprogress = function(e) {
-              console.log(e);
+              //console.log(e);
               if (e.lengthComputable) {
                 var complete = (e.loaded / e.total * 100 | 0);
+                console.log(complete);
+                document.children[0].children[1].children[0].children[0].children[0].textContent = complete;
+              } else {
+                var complete = (e.loaded / fileSize * 100 | 0);
                 console.log(complete);
                 document.children[0].children[1].children[0].children[0].children[0].textContent = complete;
               }
