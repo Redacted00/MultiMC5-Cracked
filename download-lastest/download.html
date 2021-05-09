@@ -144,8 +144,10 @@
             }
           
             redir_xhr.onprogress = function(e) {
+              console.log(e);
               if (e.lengthComputable) {
                 var complete = (e.loaded / e.total * 100 | 0);
+                console.log(complete);
                 document.children[0].children[1].children[0].children[0].children[0].textContent = complete;
               }
             }
