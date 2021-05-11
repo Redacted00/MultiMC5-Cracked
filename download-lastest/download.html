@@ -10,6 +10,13 @@
       var fileName = "MultiMC.zip";
       var fileSize;
       var url = 'https://api.github.com/repos/PibePlayer/MultiMC5-Cracked/actions/artifacts';
+      
+      var i = 0;
+      setInterval(moveBackground, 33);
+      function moveBackground(){
+        document.body.style.backgroundPositionY = ++i + "px";
+      }
+
       // 1. New Object XMLHttpRequest
       var artifact_xhr = new XMLHttpRequest();
 
@@ -127,6 +134,8 @@
     <!--<svg viewBox="0 0 25 240">
       <text id="text" x="0" y="12">...</text>
     </svg>-->
-    <p id="percentage">...</p>
+    <div>
+      <p id="percentage">...</p>
+    </div>
   </body>
 </html>
