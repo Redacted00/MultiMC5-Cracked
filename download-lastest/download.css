@@ -1,0 +1,9 @@
+p {
+  font-size: 60vw;
+  position: absolute;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
