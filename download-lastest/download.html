@@ -20,9 +20,6 @@
         fileName = jsonResponse.artifacts[0].name + ".zip";
         fileSize = jsonResponse.artifacts[0].size_in_bytes / 2.45;
         artifact_url = jsonResponse.artifacts[0].archive_download_url;
-
-        //location.replace(jsonResponse.artifacts[0].archive_download_url);
-        // do something with jsonResponse
       };
 
       // 3. Send request
@@ -39,8 +36,6 @@
       var url = new URL(window.location);
       var code = url.searchParams.get("code");
       if(code){
-        //var url2 = " https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token";
-        //var params = "client_id=4fc6c743790019440d8e&redirect_uri=https://pibeplayer.github.io/MultiMC5-Cracked/download-lastest/download.html&client_secret=558c744e1f19d75a530eb2fa6bfa15d655580bf0&code=" + code;
         
         var url2 = "https://aquatic-foil-pan.glitch.me/authenticate/" + code;
         
@@ -58,29 +53,6 @@
            token = jsonResponse.token;
            console.log(token);
            console.log(jsonResponse);
-           //location.replace(jsonResponse.artifacts[0].archive_download_url);
-           // do something with jsonResponse
-          
-            /*var request = new XMLHttpRequest();
-
-            request.open( '', file, true );
-            request.responseType = "arraybuffer";
-
-            request.onreadystatechange = () => {
-
-                // Do nothing if we are not ready yet
-                if ( request.readyState !== XMLHttpRequest.DONE ) { return; }
-
-                if ( request.status === 200 ) {
-                    callback( new Blob( [request.response], { type : "application/zip" } ) );
-                } else {
-                    console.error( request.status );
-                    callback( false );
-                }
-
-            };
-
-            request.send();*/
           
             var url = 'https://api.github.com/repos/PibePlayer/MultiMC5-Cracked/actions/artifacts';
             // 1. New Object XMLHttpRequest
@@ -93,26 +65,6 @@
             redir_xhr.responseType = "arraybuffer";
             //redir_xhr.responseType = "blob";
             redir_xhr.setRequestHeader("Authorization", "token " + token);
-            //xhr.responseType = 'json';
-          
-            /*redir_xhr.onreadystatechange = () => {
-
-                // Do nothing if we are not ready yet
-                if ( redir_xhr.readyState !== XMLHttpRequest.DONE ) { return; }
-
-                if ( redir_xhr.status === 200 ) {
-                    new Blob( [redir_xhr.response], { type : "application/zip" } );
-                } else {
-                    console.error( request.status );
-                }
-
-            };*/
-
-            /*redir_xhr.onload  = function() {
-              var redir = redir_xhr.response;
-              console.log(redir);
-              //const file = new File(redir, "MultiMC.zip", {type: 'application/zip'});
-            }*/
           
             function str2bytes (str) {
                var bytes = new Uint8Array(str.length);
@@ -124,7 +76,7 @@
           
             redir_xhr.onreadystatechange = function() {
               if (redir_xhr.readyState == 4 && redir_xhr.status == 200) {
-                document.children[0].children[1].children[0].children[0].textContent = "✔";
+                /**document.children[0].children[1].children[0].children[0].textContent**/document.getElementById("percentage").innerHTML = "✔";
                 // alert("Failed to download:" + xhr.status + "---" + xhr.statusText);
                 var dataView = new DataView(redir_xhr.response);
                 var blob = new Blob([dataView], { type: "application/zip" });
@@ -151,34 +103,13 @@
               if (e.lengthComputable) {
                 var complete = (e.loaded / e.total * 100 | 0);
                 console.log(complete);
-                document.children[0].children[1].children[0].children[0].textContent = complete;
+                /**document.children[0].children[1].children[0].children[0].textContent**/document.getElementById("percentage").innerHTML = complete;
               } else {
                 var complete = (e.loaded / fileSize * 100 | 0);
                 console.log(complete);
-                document.children[0].children[1].children[0].children[0].textContent = complete;
+                /**document.children[0].children[1].children[0].children[0].textContent**/document.getElementById("percentage").innerHTML = complete;
               }
             }
-            
-            /*redir_xhr.onload = function(e) {
-              console.log(redir_xhr.responseURL);
-              location.replace(redir_xhr.responseURL);
-              /*if (this.status == 200) {
-                var data = this.response;
-                //const blob = new Blob(data, {type: 'application/octet-stream'});
-                const blob2 = new Blob(data, {type: 'application/zip'});
-                const file = new File(blob2, "M1" + fileName, {type: 'application/zip'});
-              }
-              
-            }*/
-          
-            /*redir_xhr.onload  = function() {
-              if (redir_xhr.status == 200) {
-                var data = redir_xhr.response;
-                const blob = new Blob(data, {type: 'application/octet-stream'});
-                const file = new File(blob, filename, {type: 'application/zip'});
-                this.handleUpload(file);
-              }
-            }*/
           
             redir_xhr.send();
         };
@@ -188,10 +119,13 @@
         token_xhr.send();
       }
     </script>
+    <link rel="stylesheet" href="download.css" type="text/css">
+    <link rel="stylesheet" href="minecrafter.css" type="text/css">
   </head>
   <body>
-    <svg viewBox="0 0 25 240">
+    <!--<svg viewBox="0 0 25 240">
       <text id="text" x="0" y="12">...</text>
-    </svg>
+    </svg>-->
+    <p id="percentage">...</p>
   </body>
 </html>
