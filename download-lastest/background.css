@@ -1,7 +1,7 @@
 body {
-    background-image: url("pack.png");
+    background-image: url("pack.gif");
     background-position-y: 0px;
-    background-size: 120px;
+    /**background-size: 120px;**/
     overflow: hidden;
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
